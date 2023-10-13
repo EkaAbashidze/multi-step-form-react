@@ -9,6 +9,7 @@ export default {
         denim: "#022959",
         grey: "#9699AA",
         bg: "#EFF5FF",
+        "light-blue": "#483EFF",
       },
       boxShadow: {
         custom: "0px 25px 40px -20px rgba(0, 0, 0, 0.10)",

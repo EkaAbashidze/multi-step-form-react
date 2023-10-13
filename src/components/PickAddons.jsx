@@ -34,8 +34,8 @@ function PickAddons({ selectedAddons, onAddonSelect }) {
               type="checkbox"
               checked={selectedAddons.includes(addon)}
               onChange={() => handleAddonToggle(addon)}
-            />{" "}
-            {addon}
+            />
+            {addon} 
           </label>
         </div>
       ))}

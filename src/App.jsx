@@ -71,8 +71,7 @@ function App() {
           selectedAddons={selectedAddons}
           onAddonSelect={handleAddonSelect}
         />
-      )}{" "}
-      {/* Render PickAddons on the third page */}
+      )}
       <Navigation
         currentPage={activeButton}
         totalPages={totalPages}
