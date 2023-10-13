@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import UserInfo from "./components/UserInfo";
 import SelectPlan from "./components/SelectPlan";
 import PickAddons from "./components/PickAddons";
+import { useDispatch } from "react-redux";
 
 function App() {
   const [activeButton, setActiveButton] = useState(1);
@@ -11,12 +12,30 @@ function App() {
   const [selectedAddons, setSelectedAddons] = useState([]);
   const totalPages = 4;
 
+  const dispatch = useDispatch();
+
   const handleButtonClick = (number) => {
     setActiveButton(number);
   };
 
   const handleNext = () => {
     if (activeButton < totalPages) {
+      dispatch({
+        type: "updateUserInfo",
+        field: "name",
+        value: document.querySelector('input[type="text"]').value,
+      });
+      dispatch({
+        type: "updateUserInfo",
+        field: "email",
+        value: document.querySelector('input[type="email"]').value,
+      });
+      dispatch({
+        type: "updateUserInfo",
+        field: "phoneNumber",
+        value: document.querySelector('input[type="tel"]').value,
+      });
+
       setActiveButton(activeButton + 1);
     }
   };
