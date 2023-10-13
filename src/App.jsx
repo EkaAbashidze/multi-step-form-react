@@ -2,9 +2,11 @@ import { useState } from "react";
 import PageNumber from "./components/PageNumber";
 import Navigation from "./components/Navigation";
 import UserInfo from "./components/UserInfo";
+import SelectPlan from "./components/SelectPlan";
 
 function App() {
   const [activeButton, setActiveButton] = useState(1);
+  const [selectedPlan, setSelectedPlan] = useState("");
   const totalPages = 4;
 
   const handleButtonClick = (number) => {
@@ -21,6 +23,10 @@ function App() {
     if (activeButton > 1) {
       setActiveButton(activeButton - 1);
     }
+  };
+
+  const handlePlanSelect = (plan) => {
+    setSelectedPlan(plan);
   };
 
   return (
@@ -47,8 +53,13 @@ function App() {
           onClick={() => handleButtonClick(4)}
         />
       </div>
-      {activeButton === 1 && <UserInfo />}{" "}
-      {/* Render UserInfo on the first page */}
+      {activeButton === 1 && <UserInfo />}
+      {activeButton === 2 && (
+        <SelectPlan
+          selectedPlan={selectedPlan}
+          onPlanSelect={handlePlanSelect}
+        />
+      )}
       <Navigation
         currentPage={activeButton}
         totalPages={totalPages}
