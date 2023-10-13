@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageNumber from "./components/PageNumber";
 import Navigation from "./components/Navigation";
+import UserInfo from "./components/UserInfo";
 
 function App() {
   const [activeButton, setActiveButton] = useState(1);
@@ -46,6 +47,8 @@ function App() {
           onClick={() => handleButtonClick(4)}
         />
       </div>
+      {activeButton === 1 && <UserInfo />}{" "}
+      {/* Render UserInfo on the first page */}
       <Navigation
         currentPage={activeButton}
         totalPages={totalPages}

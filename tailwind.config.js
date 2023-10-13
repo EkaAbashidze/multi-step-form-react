@@ -10,6 +10,9 @@ export default {
         grey: "#9699AA",
         bg: "#EFF5FF",
       },
+      boxShadow: {
+        custom: "0px 25px 40px -20px rgba(0, 0, 0, 0.10)",
+      },
       backgroundImage: {
         // "bg-mobile": "url('../public/images/bg-sidebar-mobile.svg')",
       },

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 function Navigation({ currentPage, totalPages, onNext, onPrev }) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 p-4 bg-white shadow-lg flex justify-between items-center">
+    <div className="fixed bottom-0 left-0 right-0 p-4 bg-white flex justify-between items-center">
       {currentPage > 1 && (
         <button className="text-grey p-2 rounded" onClick={onPrev}>
           Go Back
