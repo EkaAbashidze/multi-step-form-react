@@ -4,9 +4,11 @@
 
 body {
   background-image: url("../public/images/bg-sidebar-mobile.svg");
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   padding: 32px 16px;
+  height: 100vh;
+  background-color: #eff5ff;
 }
 
 @media (min-width: 768px) {
