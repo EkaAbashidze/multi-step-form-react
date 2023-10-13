@@ -1,8 +1,18 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function UserInfoForm() {
+  const dispatch = useDispatch();
+
   const counter = useSelector((state) => state.counter);
+
+  const incrementHandler = () => {
+    dispatch({ type: "increment" });
+  };
+
+  const decrementHandler = () => {
+    dispatch({ type: "decrement" });
+  };
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,17 +31,18 @@ function UserInfoForm() {
   };
 
   return (
-    <div
-      style={{
-        background: "white",
-        padding: "20px",
-        borderRadius: "5px",
-        boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-      }}
-    >
+    <div className="bg-white p-2 rounded-lg shadow-md">
       <h2>
         User Information <span className="font-bold">{counter}</span>
       </h2>
+      <button className=" underline" onClick={incrementHandler}>
+        Increment Counter
+      </button>
+      <br />
+      <button className=" underline" onClick={decrementHandler}>
+        Decrement Counter
+      </button>
+
       <div>
         <label>Name:</label>
         <input type="text" value={name} onChange={handleNameChange} />
