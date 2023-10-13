@@ -3,10 +3,12 @@ import PageNumber from "./components/PageNumber";
 import Navigation from "./components/Navigation";
 import UserInfo from "./components/UserInfo";
 import SelectPlan from "./components/SelectPlan";
+import PickAddons from "./components/PickAddons";
 
 function App() {
   const [activeButton, setActiveButton] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState("");
+  const [selectedAddons, setSelectedAddons] = useState([]);
   const totalPages = 4;
 
   const handleButtonClick = (number) => {
@@ -27,6 +29,10 @@ function App() {
 
   const handlePlanSelect = (plan) => {
     setSelectedPlan(plan);
+  };
+
+  const handleAddonSelect = (addons) => {
+    setSelectedAddons(addons);
   };
 
   return (
@@ -60,6 +66,13 @@ function App() {
           onPlanSelect={handlePlanSelect}
         />
       )}
+      {activeButton === 3 && (
+        <PickAddons
+          selectedAddons={selectedAddons}
+          onAddonSelect={handleAddonSelect}
+        />
+      )}{" "}
+      {/* Render PickAddons on the third page */}
       <Navigation
         currentPage={activeButton}
         totalPages={totalPages}
