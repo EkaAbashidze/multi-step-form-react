@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function UserInfoForm() {
+  const counter = useSelector((state) => state.counter);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -26,7 +29,9 @@ function UserInfoForm() {
         boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <h2>User Information</h2>
+      <h2>
+        User Information <span className="font-bold">{counter}</span>
+      </h2>
       <div>
         <label>Name:</label>
         <input type="text" value={name} onChange={handleNameChange} />
