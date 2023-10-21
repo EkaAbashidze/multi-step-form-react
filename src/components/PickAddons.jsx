@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 function PickAddons({ selectedAddons, onAddonSelect }) {
+  const reduxAddons = useSelector((state) => state.addons);
+
+  console.log("REDUX PLAN:", reduxAddons);
+
   const availableAddons = [
     "Online Service",
     "Larger Storage",
@@ -18,14 +23,7 @@ function PickAddons({ selectedAddons, onAddonSelect }) {
   };
 
   return (
-    <div
-      style={{
-        background: "white",
-        padding: "20px",
-        borderRadius: "5px",
-        boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-      }}
-    >
+    <div className="bg-white p-2 rounded-lg shadow-md">
       <h2>Pick Add-ons</h2>
       {availableAddons.map((addon, index) => (
         <div key={index}>
@@ -35,7 +33,7 @@ function PickAddons({ selectedAddons, onAddonSelect }) {
               checked={selectedAddons.includes(addon)}
               onChange={() => handleAddonToggle(addon)}
             />
-            {addon} 
+            {addon}
           </label>
         </div>
       ))}

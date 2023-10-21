@@ -52,6 +52,15 @@ function App() {
 
       setActiveButton(activeButton + 1);
     }
+    if (activeButton === 3) {
+      dispatch({
+        type: "updateAddons",
+        field: "addons",
+        value: selectedAddons,
+      });
+
+      setActiveButton(activeButton + 1);
+    }
   };
 
   const handlePrev = () => {

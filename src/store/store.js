@@ -7,6 +7,7 @@ const initialState = {
     phoneNumber: "",
   },
   selectedPlan: "OLA",
+  addons: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +24,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         selectedPlan: action.value,
+      };
+    case "updateAddons":
+      return {
+        ...state,
+        addons: action.value,
       };
     default:
       return state;
