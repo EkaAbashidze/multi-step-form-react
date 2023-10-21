@@ -5,6 +5,7 @@ import UserInfo from "./components/UserInfo";
 import SelectPlan from "./components/SelectPlan";
 import PickAddons from "./components/PickAddons";
 import { useDispatch } from "react-redux";
+import FinishingUp from "./components/FinishingUp";
 
 function App() {
   const [activeButton, setActiveButton] = useState(1);
@@ -111,6 +112,7 @@ function App() {
           onAddonSelect={handleAddonSelect}
         />
       )}
+      {activeButton === 4 && <FinishingUp />}
       <Navigation
         currentPage={activeButton}
         totalPages={totalPages}
