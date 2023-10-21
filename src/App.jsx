@@ -12,14 +12,18 @@ function App() {
   const [selectedAddons, setSelectedAddons] = useState([]);
   const totalPages = 4;
 
+  console.log("state: " + selectedPlan);
+
   const dispatch = useDispatch();
 
   const handleButtonClick = (number) => {
     setActiveButton(number);
   };
 
+  const plans = ["Basic Plan", "Standard Plan", "Premium Plan"];
+
   const handleNext = () => {
-    if (activeButton < totalPages) {
+    if (activeButton === 1) {
       dispatch({
         type: "updateUserInfo",
         field: "name",
@@ -34,6 +38,16 @@ function App() {
         type: "updateUserInfo",
         field: "phoneNumber",
         value: document.querySelector('input[type="tel"]').value,
+      });
+
+      setActiveButton(activeButton + 1);
+    }
+    if (activeButton === 2) {
+      console.log("Dispatching updatePlan with selectedPlan:", selectedPlan);
+      dispatch({
+        type: "updatePlan",
+        field: "selectedPlan",
+        value: selectedPlan,
       });
 
       setActiveButton(activeButton + 1);
@@ -80,10 +94,7 @@ function App() {
       </div>
       {activeButton === 1 && <UserInfo />}
       {activeButton === 2 && (
-        <SelectPlan
-          selectedPlan={selectedPlan}
-          onPlanSelect={handlePlanSelect}
-        />
+        <SelectPlan plans={plans} onPlanSelect={handlePlanSelect} />
       )}
       {activeButton === 3 && (
         <PickAddons

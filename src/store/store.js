@@ -6,6 +6,7 @@ const initialState = {
     email: "",
     phoneNumber: "",
   },
+  selectedPlan: "OLA",
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const reducer = (state = initialState, action) => {
           ...state.userInfo,
           [action.field]: action.value,
         },
+      };
+    case "updatePlan":
+      return {
+        ...state,
+        selectedPlan: action.value,
       };
     default:
       return state;

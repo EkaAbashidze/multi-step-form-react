@@ -1,17 +1,13 @@
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-function SelectPlan({ selectedPlan, onPlanSelect }) {
-  const plans = ["Basic Plan", "Standard Plan", "Premium Plan"];
+function SelectPlan({ plans, onPlanSelect }) {
+  const chosenPlan = useSelector((state) => state.selectedPlan);
+
+  console.log("REDUX PLAN:", chosenPlan);
 
   return (
-    <div
-      style={{
-        background: "white",
-        padding: "20px",
-        borderRadius: "5px",
-        boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-      }}
-    >
+    <div className="bg-white p-2 rounded-lg shadow-md">
       <h2>Select Your Plan</h2>
       {plans.map((plan, index) => (
         <div key={index}>
@@ -19,9 +15,9 @@ function SelectPlan({ selectedPlan, onPlanSelect }) {
             <input
               type="radio"
               value={plan}
-              checked={selectedPlan === plan}
+              checked={chosenPlan === plan}
               onChange={() => onPlanSelect(plan)}
-            />{" "}
+            />
             {plan}
           </label>
         </div>
@@ -31,7 +27,7 @@ function SelectPlan({ selectedPlan, onPlanSelect }) {
 }
 
 SelectPlan.propTypes = {
-  selectedPlan: PropTypes.string.isRequired,
+  plans: PropTypes.array.isRequired,
   onPlanSelect: PropTypes.func.isRequired,
 };
 
