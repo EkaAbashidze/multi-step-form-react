@@ -6,6 +6,7 @@ import SelectPlan from "./components/SelectPlan";
 import PickAddons from "./components/PickAddons";
 import { useDispatch } from "react-redux";
 import FinishingUp from "./components/FinishingUp";
+import ThankYou from "./components/ThankYou";
 
 function App() {
   const [activeButton, setActiveButton] = useState(1);
@@ -40,8 +41,6 @@ function App() {
         field: "phoneNumber",
         value: document.querySelector('input[type="tel"]').value,
       });
-
-      setActiveButton(activeButton + 1);
     }
     if (activeButton === 2) {
       console.log("Dispatching updatePlan with selectedPlan:", selectedPlan);
@@ -50,8 +49,6 @@ function App() {
         field: "selectedPlan",
         value: selectedPlan,
       });
-
-      setActiveButton(activeButton + 1);
     }
     if (activeButton === 3) {
       dispatch({
@@ -62,6 +59,7 @@ function App() {
 
       setActiveButton(activeButton + 1);
     }
+    setActiveButton(activeButton + 1);
   };
 
   const handlePrev = () => {
@@ -113,12 +111,16 @@ function App() {
         />
       )}
       {activeButton === 4 && <FinishingUp />}
-      <Navigation
-        currentPage={activeButton}
-        totalPages={totalPages}
-        onNext={handleNext}
-        onPrev={handlePrev}
-      />
+      {activeButton !== 5 ? (
+        <Navigation
+          currentPage={activeButton}
+          totalPages={totalPages}
+          onNext={handleNext}
+          onPrev={handlePrev}
+        />
+      ) : (
+        <ThankYou />
+      )}
     </>
   );
 }
