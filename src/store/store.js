@@ -29,7 +29,7 @@ const selectedPlanSlice = createSlice({
   initialState: initialState.selectedPlan,
   reducers: {
     updatePlan(state, action) {
-      return action.payload;
+      return action.payload.value;
     },
   },
 });
@@ -39,35 +39,10 @@ const addonsSlice = createSlice({
   initialState: initialState.addons,
   reducers: {
     updateAddons(state, action) {
-      return action.payload;
+      return action.payload.value;
     },
   },
 });
-
-// const reducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case "updateUserInfo":
-//       return {
-//         ...state,
-//         userInfo: {
-//           ...state.userInfo,
-//           [action.field]: action.value,
-//         },
-//       };
-//     case "updatePlan":
-//       return {
-//         ...state,
-//         selectedPlan: action.value,
-//       };
-//     case "updateAddons":
-//       return {
-//         ...state,
-//         addons: action.value,
-//       };
-//     default:
-//       return state;
-//   }
-// };
 
 const store = configureStore({
   reducer: {
@@ -78,5 +53,7 @@ const store = configureStore({
 });
 
 export const userInfoActions = userInfoSlice.actions;
+export const selectedPlanSliceActions = selectedPlanSlice.actions;
+export const addonsSliceActions = addonsSlice.actions;
 
 export default store;

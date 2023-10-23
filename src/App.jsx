@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 import FinishingUp from "./components/FinishingUp";
 import ThankYou from "./components/ThankYou";
 import { userInfoActions } from "./store/store";
+import { selectedPlanSliceActions } from "./store/store";
+import { addonsSliceActions } from "./store/store";
 
 function App() {
   const [activeButton, setActiveButton] = useState(1);
@@ -48,18 +50,20 @@ function App() {
     }
     if (activeButton === 2) {
       console.log("Dispatching updatePlan with selectedPlan:", selectedPlan);
-      dispatch({
-        type: "updatePlan",
-        field: "selectedPlan",
-        value: selectedPlan,
-      });
+      dispatch(
+        selectedPlanSliceActions.updatePlan({
+          field: "selectedPlan",
+          value: selectedPlan,
+        })
+      );
     }
     if (activeButton === 3) {
-      dispatch({
-        type: "updateAddons",
-        field: "addons",
-        value: selectedAddons,
-      });
+      dispatch(
+        addonsSliceActions.updateAddons({
+          field: "addons",
+          value: selectedAddons,
+        })
+      );
 
       setActiveButton(activeButton + 1);
     }
