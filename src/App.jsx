@@ -7,6 +7,7 @@ import PickAddons from "./components/PickAddons";
 import { useDispatch } from "react-redux";
 import FinishingUp from "./components/FinishingUp";
 import ThankYou from "./components/ThankYou";
+import { userInfoActions } from "./store/store";
 
 function App() {
   const [activeButton, setActiveButton] = useState(1);
@@ -26,21 +27,24 @@ function App() {
 
   const handleNext = () => {
     if (activeButton === 1) {
-      dispatch({
-        type: "updateUserInfo",
-        field: "name",
-        value: document.querySelector('input[type="text"]').value,
-      });
-      dispatch({
-        type: "updateUserInfo",
-        field: "email",
-        value: document.querySelector('input[type="email"]').value,
-      });
-      dispatch({
-        type: "updateUserInfo",
-        field: "phoneNumber",
-        value: document.querySelector('input[type="tel"]').value,
-      });
+      dispatch(
+        userInfoActions.updateUserInfo({
+          field: "name",
+          value: document.querySelector('input[type="text"]').value,
+        })
+      );
+      dispatch(
+        userInfoActions.updateUserInfo({
+          field: "email",
+          value: document.querySelector('input[type="email"]').value,
+        })
+      );
+      dispatch(
+        userInfoActions.updateUserInfo({
+          field: "phoneNumber",
+          value: document.querySelector('input[type="tel"]').value,
+        })
+      );
     }
     if (activeButton === 2) {
       console.log("Dispatching updatePlan with selectedPlan:", selectedPlan);

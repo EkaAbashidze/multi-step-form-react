@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-image: url("../public/images/bg-sidebar-mobile.svg");
+  background-image: url("/images/bg-sidebar-mobile.svg");
   background-size: contain;
   background-repeat: no-repeat;
   padding: 32px 16px;
@@ -13,7 +13,7 @@ body {
 
 @media (min-width: 768px) {
   body {
-    background-image: url("../public/images/bg-sidebar-desktop.svg");
+    background-image: url("/images/bg-sidebar-desktop.svg");
     background-size: auto;
   }
 }
