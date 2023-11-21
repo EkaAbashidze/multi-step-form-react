@@ -10,6 +10,7 @@ import ThankYou from "./components/ThankYou";
 import { userInfoActions } from "./store/store";
 import { selectedPlanSliceActions } from "./store/store";
 import { addonsSliceActions } from "./store/store";
+import ProPhoto from "/images/icon-pro.svg";
 
 function App() {
   const [activeButton, setActiveButton] = useState(1);
@@ -87,6 +88,10 @@ function App() {
   return (
     <>
       <div className="flex justify-center">
+        <div>
+          <img src={ProPhoto} alt="" />
+        </div>
+
         <PageNumber
           number={1}
           isActive={activeButton === 1}
